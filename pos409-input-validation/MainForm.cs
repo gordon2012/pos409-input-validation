@@ -49,10 +49,20 @@ namespace pos409_input_validation
 
             bool valid = true;
 
-            // name: not blank
-            valid = valid && !txtName.Text.Equals("");
+            if (txtName.Text.Equals(""))
+            {
+                errorProvider.SetError(txtName, "Name must not be blank");
+                valid = false;
+            }
 
-            valid = valid && Regex.IsMatch(txtPart.Text, @"^(\d|[A-Z]){8}-(0|1){2}$");
+            
+
+
+
+            // name: not blank
+            //valid = valid && !txtName.Text.Equals("");
+
+            //valid = valid && Regex.IsMatch(txtPart.Text, @"^(\d|[A-Z]){8}-(0|1){2}$");
 
             //Reg
 
@@ -64,7 +74,7 @@ namespace pos409_input_validation
             }
             else
             {
-                MessageBox.Show("Invalid");
+                //MessageBox.Show("Invalid");
 
             }
 
