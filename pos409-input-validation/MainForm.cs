@@ -24,48 +24,61 @@ namespace pos409_input_validation
 {
     public partial class MainForm : Form
     {
-        List<Order> orders = new List<Order>();
+        //List<Order> orders = new List<Order>();
 
 
         public MainForm()
         {
             InitializeComponent();
-
-            //dgvOrders.DataSource = orders;
         }
+
+        private bool ValidateRegex(string pattern)
+        {
+            return false;
+        }
+
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            //dgvOrders.
-            //orders.Add(new Order(txtName.Text));
-            //dgvOrders.Refresh();
-            //dgvOrders.d
-
             // Validate all fields
             // part: an 8 digit prefix consisting of capital letters or numbers followed by a dash followed by a two digit suffix that can only be zeroes or ones.
             // >> regex: (\d|[A-Z]){8}-(0|1){2}
-            // SSN: (999-99-9999)
-            // phone: (999-999-9999)
+
+            errorProvider.Clear();
 
             bool valid = true;
 
+            // Validate name
+            //
             if (txtName.Text.Equals(""))
             {
                 errorProvider.SetError(txtName, "Name must not be blank");
                 valid = false;
             }
 
+            // Validate part number
+            //
+            if (!Regex.IsMatch(txtPart.Text, @"^(\d|[A-Z]){8}-(0|1){2}$"))
+            {
+                errorProvider.SetError(txtPart, "Invalid Part number");
+                valid = false;
+            }
             
+            // Validate quantity
+
+            // Validate cost
+
+            // Validate SSN
+            // SSN: (999-99-9999)
+
+            // Validate phone
+            // phone: (999-999-9999)
 
 
 
-            // name: not blank
-            //valid = valid && !txtName.Text.Equals("");
-
-            //valid = valid && Regex.IsMatch(txtPart.Text, @"^(\d|[A-Z]){8}-(0|1){2}$");
-
-            //Reg
-
+            
+            // If preceding validation is successful, add new record
+            //
             if (valid)
             {
                 
@@ -75,11 +88,7 @@ namespace pos409_input_validation
             else
             {
                 //MessageBox.Show("Invalid");
-
             }
-
-
-
         }
     }
 
