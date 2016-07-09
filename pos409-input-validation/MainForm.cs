@@ -32,9 +32,18 @@ namespace pos409_input_validation
             InitializeComponent();
         }
 
-        private bool ValidateRegex(string pattern)
+
+        private bool ValidateRegex(Control control, string pattern, string error)
         {
-            return false;
+            if (Regex.IsMatch(control.Text, pattern))
+	        {
+                return true;
+        	}
+            else
+	        {
+                errorProvider.SetError(control, error);
+                return false;
+	        }
         }
 
 
@@ -50,30 +59,42 @@ namespace pos409_input_validation
 
             // Validate name
             //
-            if (txtName.Text.Equals(""))
-            {
-                errorProvider.SetError(txtName, "Name must not be blank");
-                valid = false;
-            }
+            //if (txtName.Text.Equals(""))
+            //{
+            //    errorProvider.SetError(txtName, "Name must not be blank");
+            //    valid = false;
+            //}
+            valid = valid & ValidateRegex(txtName, @"^(?!\s*$).+", "Name must not be blank");
+
 
             // Validate part number
             //
-            if (!Regex.IsMatch(txtPart.Text, @"^(\d|[A-Z]){8}-(0|1){2}$"))
-            {
-                errorProvider.SetError(txtPart, "Invalid Part number");
-                valid = false;
-            }
+            valid = valid & ValidateRegex(txtPart, @"^(\d|[A-Z]){8}-(0|1){2}$", "Invalid Part number");
+
             
+
+
+
             // Validate quantity
+            // ^\d+$
+            valid = valid & ValidateRegex(txtQty, @"^\d+$", "Invalid Quantity");
+
 
             // Validate cost
+            // (^\d+$)|(^\d*\.\d{1,2}$)
+            valid = valid & ValidateRegex(txtCost, @"(^\d+$)|(^\d*\.\d{1,2}$)", "Invalid Cost");
+
+
 
             // Validate SSN
             // SSN: (999-99-9999)
+            valid = valid & ValidateRegex(txtSsn, @"^\d{3}-\d{2}-\d{4}$", "Invalid SSN");
+
+
 
             // Validate phone
             // phone: (999-999-9999)
-
+            valid = valid & ValidateRegex(txtPhone, @"^\d{3}-\d{3}-\d{4}$", "Invalid Phone number");
 
 
             
@@ -81,9 +102,12 @@ namespace pos409_input_validation
             //
             if (valid)
             {
-                
                 lstName.Items.Add(txtName.Text);
                 lstPart.Items.Add(txtPart.Text);
+                lstQty.Items.Add(txtQty.Text);
+                lstCost.Items.Add(txtCost.Text);
+                lstSsn.Items.Add(txtSsn.Text);
+                lstPhone.Items.Add(txtPhone.Text);
             }
             else
             {
