@@ -1,5 +1,4 @@
-﻿
-// Input Validation
+﻿// Input Validation
 // Gordon Doskas
 // POS/409
 // July 11, 2016
@@ -7,14 +6,12 @@
 
 // Program Description
 // ===================
-// This program is a Windows Forms application that demonstrates input validation using regular expressions.
-// It contains input fields for a customer name, a part number, an order quantity, a unit cost, a social security number, and a phone number.
-// Last the program should also perform a "sanity check" on one of the input fields.
+// This program is a Windows Forms application that demonstrates input
+// validation using regular expressions. It contains input fields for a customer
+// name, a part number, an order quantity, a unit cost, a social security
+// number, and a phone number. The program also performs a "sanity check" on
+// the quantity field if the user enters a number above 500.
 
-// Describe validation?
-// part: an 8 digit prefix consisting of capital letters or numbers followed by a dash followed by a two digit suffix that can only be zeroes or ones.
-// SSN: (999-99-9999)
-// phone: (999-999-9999)
 
 using System;
 using System.Collections.Generic;
@@ -35,6 +32,7 @@ namespace pos409_input_validation
         public MainForm()
         {
             InitializeComponent();
+            txtName.Select();
         }
 
 
@@ -54,10 +52,6 @@ namespace pos409_input_validation
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            // Validate all fields
-            // part: an 8 digit prefix consisting of capital letters or numbers followed by a dash followed by a two digit suffix that can only be zeroes or ones.
-            // >> regex: (\d|[A-Z]){8}-(0|1){2}
-
             errorProvider.Clear();
 
             bool valid = true;
@@ -87,7 +81,17 @@ namespace pos409_input_validation
             valid = valid & ValidateRegex(txtPhone, @"^\d{3}-\d{3}-\d{4}$", "Invalid Phone number");
 
 
-            // TODO: sanity check
+            // Sanity check
+            //
+            if(valid && int.Parse(txtQty.Text) > 500)
+            {
+                valid = valid & (MessageBox.Show("So many? Are you sure?", "Sanity Check", MessageBoxButtons.YesNo) == DialogResult.Yes ? true : false);
+
+                if (!valid)
+                {
+                    errorProvider.SetError(txtQty, "Quantity too high");
+                }
+            }
 
             
             // If preceding validation is successful, add new record
@@ -100,6 +104,13 @@ namespace pos409_input_validation
                 lstCost.Items.Add(txtCost.Text);
                 lstSsn.Items.Add(txtSsn.Text);
                 lstPhone.Items.Add(txtPhone.Text);
+
+                txtName.Clear();
+                txtPart.Clear();
+                txtQty.Clear();
+                txtCost.Clear();
+                txtSsn.Clear();
+                txtPhone.Clear();
             }
         }
     }

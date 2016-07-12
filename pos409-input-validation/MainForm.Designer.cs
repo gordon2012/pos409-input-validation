@@ -78,7 +78,7 @@
             this.btnAdd.Location = new System.Drawing.Point(9, 71);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(93, 30);
-            this.btnAdd.TabIndex = 1;
+            this.btnAdd.TabIndex = 7;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -88,7 +88,7 @@
             this.txtName.Location = new System.Drawing.Point(54, 3);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(170, 20);
-            this.txtName.TabIndex = 2;
+            this.txtName.TabIndex = 1;
             // 
             // tableLayoutPanel1
             // 
@@ -126,6 +126,7 @@
             this.lstPhone.Name = "lstPhone";
             this.lstPhone.Size = new System.Drawing.Size(77, 342);
             this.lstPhone.TabIndex = 20;
+            this.lstPhone.TabStop = false;
             // 
             // lstSsn
             // 
@@ -134,6 +135,7 @@
             this.lstSsn.Name = "lstSsn";
             this.lstSsn.Size = new System.Drawing.Size(77, 342);
             this.lstSsn.TabIndex = 19;
+            this.lstSsn.TabStop = false;
             // 
             // lstCost
             // 
@@ -142,6 +144,7 @@
             this.lstCost.Name = "lstCost";
             this.lstCost.Size = new System.Drawing.Size(77, 342);
             this.lstCost.TabIndex = 18;
+            this.lstCost.TabStop = false;
             // 
             // lstQty
             // 
@@ -150,6 +153,7 @@
             this.lstQty.Name = "lstQty";
             this.lstQty.Size = new System.Drawing.Size(77, 342);
             this.lstQty.TabIndex = 17;
+            this.lstQty.TabStop = false;
             // 
             // label11
             // 
@@ -212,6 +216,7 @@
             this.lstPart.Name = "lstPart";
             this.lstPart.Size = new System.Drawing.Size(77, 342);
             this.lstPart.TabIndex = 7;
+            this.lstPart.TabStop = false;
             // 
             // lstName
             // 
@@ -220,6 +225,7 @@
             this.lstName.Name = "lstName";
             this.lstName.Size = new System.Drawing.Size(77, 342);
             this.lstName.TabIndex = 6;
+            this.lstName.TabStop = false;
             // 
             // label1
             // 
@@ -235,35 +241,35 @@
             this.txtPart.Location = new System.Drawing.Point(54, 29);
             this.txtPart.Name = "txtPart";
             this.txtPart.Size = new System.Drawing.Size(170, 20);
-            this.txtPart.TabIndex = 6;
+            this.txtPart.TabIndex = 2;
             // 
             // txtQty
             // 
             this.txtQty.Location = new System.Drawing.Point(54, 55);
             this.txtQty.Name = "txtQty";
             this.txtQty.Size = new System.Drawing.Size(170, 20);
-            this.txtQty.TabIndex = 8;
+            this.txtQty.TabIndex = 3;
             // 
             // txtCost
             // 
             this.txtCost.Location = new System.Drawing.Point(54, 81);
             this.txtCost.Name = "txtCost";
             this.txtCost.Size = new System.Drawing.Size(170, 20);
-            this.txtCost.TabIndex = 9;
+            this.txtCost.TabIndex = 4;
             // 
             // txtSsn
             // 
             this.txtSsn.Location = new System.Drawing.Point(58, 3);
             this.txtSsn.Name = "txtSsn";
             this.txtSsn.Size = new System.Drawing.Size(170, 20);
-            this.txtSsn.TabIndex = 10;
+            this.txtSsn.TabIndex = 5;
             // 
             // txtPhone
             // 
             this.txtPhone.Location = new System.Drawing.Point(58, 29);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(170, 20);
-            this.txtPhone.TabIndex = 11;
+            this.txtPhone.TabIndex = 6;
             // 
             // label5
             // 
